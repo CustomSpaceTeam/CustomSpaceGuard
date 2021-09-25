@@ -6,7 +6,7 @@
 [![](https://poggit.pmmp.io/shield.dl/CustomSpaceGuard)](https://poggit.pmmp.io/p/CustomSpaceGuard)
 
 
-This plugin is not the port of the popular bukkit plugin called ["WorldGuard"](https://dev.bukkit.org/projects/worldguard), but we har nearly some features as it. It was originally developed by [Muqsit](https://github.com/Muqsit), but more flags and extended capabilities were added by us.
+This plugin will do the same as the populare bukkit plugin called ["WorldGuard"](https://dev.bukkit.org/projects/worldguard), but we had not all features integrated and it would be not a port from it. It was originally developed by [Muqsit](https://github.com/Muqsit), but more flags and extended capabilities were added by us.
 
 # Features
 - User friendly interface for users that prefer a menu rather than typing lenghty commands.   
