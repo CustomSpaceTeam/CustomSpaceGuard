@@ -1,8 +1,8 @@
---- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Chalapa13/WorldGuard
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/CustomSpaceTeam/CustomSpaceGuard
 branches:
 - master
 projects:
-  WorldGuard:
+  CustomSpace:
     path: ""
     icon: icon.png
     model: default
