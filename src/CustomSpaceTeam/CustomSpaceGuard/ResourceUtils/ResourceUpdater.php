@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MihaiChirculete\WorldGuard\ResourceUtils;
+namespace CustomSpaceTeam\CustomSpaceGuard\ResourceUtils;
 
 
 /** This class is an utility that will be used to fix conflicts between old and new resources
@@ -48,7 +48,7 @@ class ResourceUpdater
         $this->defaultLanguagePack = array(
             "version" => $this->resourceManagerInstance->getPluginVersion(),
             "author_name" => "Chalapa",
-            "gui_wg_menu_title" => "World Guard Menu",
+            "gui_wg_menu_title" => "Custom Space Menu",
             "gui_label_choose_option" => "Choose an option",
             "gui_btn_rg_management" => "Region Management",
             "gui_btn_help" => "Help",
@@ -103,7 +103,7 @@ class ResourceUpdater
             "gui_flag_spread" => "Allow spreading",
             "gui_flag_block_burn" => "Allow block burn",
             "gui_flag_priority" => "Region priority",
-            "gui_help_menu_label1" => "If you need help setting up WorldGuard, you can contact us on Discord for help:",
+            "gui_help_menu_label1" => "If you need help setting up CustomSpace, you can contact us on Discord for help:",
             "gui_help_menu_label2" => "https://discord.com/invite/uZevqGX",
             //effects
             "gui_flag_effect" => "Effects",

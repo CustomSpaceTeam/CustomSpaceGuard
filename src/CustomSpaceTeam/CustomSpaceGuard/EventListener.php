@@ -20,7 +20,8 @@
 * GitHub: https://github.com/MihaiChirculete
 */
 
-namespace MihaiChirculete\WorldGuard;
+namespace CustomSpaceTeam\CustomSpaceGuard;
+
 use pocketmine\block\Block;
 use pocketmine\event\block\{BlockPlaceEvent, BlockBreakEvent, LeavesDecayEvent, BlockGrowEvent, BlockUpdateEvent, BlockSpreadEvent, BlockBurnEvent};
 use pocketmine\event\entity\{EntityDamageEvent, EntityDamageByEntityEvent, EntityExplodeEvent, ProjectileLaunchEvent};
@@ -44,7 +45,7 @@ class EventListener implements Listener {
 
     private $plugin;
 
-    public function __construct(WorldGuard $plugin){$this->plugin = $plugin;}
+    public function __construct(CustomSpace $plugin){$this->plugin = $plugin;}
 
     /**
     * @priority MONITOR
@@ -65,7 +66,7 @@ class EventListener implements Listener {
             $player = $event->getPlayer();
             if (($reg = $this->plugin->getRegionFromPosition($event->getBlock())) !== "") {
                 if ($reg->getFlag("block-place") === "false") {
-                    if($event->getPlayer()->hasPermission("worldguard.place." . $reg->getName()) || $event->getPlayer()->hasPermission("worldguard.block-place." . $reg->getName())){
+                    if($event->getPlayer()->hasPermission("customspace.place." . $reg->getName()) || $event->getPlayer()->hasPermission("customspace.block-place." . $reg->getName())){
                         return true;
                     }
                     else{
@@ -128,37 +129,37 @@ class EventListener implements Listener {
             if ($reg->getFlag("pluginbypass") === "false") {
                 $block = $event->getBlock()->getId();
                 if ($reg->getFlag("use") === "false") {
-                    if($player->hasPermission("worldguard.usechest." . $reg->getName()) && $block === Block::CHEST)
+                    if($player->hasPermission("customspace.usechest." . $reg->getName()) && $block === Block::CHEST)
                         return;
-                    if($player->hasPermission("worldguard.usechestender." . $reg->getName()) && $block === Block::ENDER_CHEST)
+                    if($player->hasPermission("customspace.usechestender." . $reg->getName()) && $block === Block::ENDER_CHEST)
                         return;
-                    if($player->hasPermission("worldguard.usetrappedchest." . $reg->getName()) && $block === Block::TRAPPED_CHEST)
+                    if($player->hasPermission("customspace.usetrappedchest." . $reg->getName()) && $block === Block::TRAPPED_CHEST)
                         return;
-                    if($player->hasPermission("worldguard.enchantingtable." . $reg->getName()) && $block === Block::ENCHANTING_TABLE)
+                    if($player->hasPermission("customspace.enchantingtable." . $reg->getName()) && $block === Block::ENCHANTING_TABLE)
                         return;
-                    if($player->hasPermission("worldguard.usefurnaces." . $reg->getName()) && $block === Block::BURNING_FURNACE || $block === Block::FURNACE )
+                    if($player->hasPermission("customspace.usefurnaces." . $reg->getName()) && $block === Block::BURNING_FURNACE || $block === Block::FURNACE )
                         return;
-                    if($player->hasPermission("worldguard.usedoors." . $reg->getName()) && ($block === Block::ACACIA_DOOR_BLOCK || $block === Block::BIRCH_DOOR_BLOCK || $block === Block::DARK_OAK_DOOR_BLOCK || $block === Block::IRON_DOOR_BLOCK || $block === Block::JUNGLE_DOOR_BLOCK || $block === Block::OAK_DOOR_BLOCK || $block === Block::SPRUCE_DOOR_BLOCK || $block === Block::WOODEN_DOOR_BLOCK))
+                    if($player->hasPermission("customspace.usedoors." . $reg->getName()) && ($block === Block::ACACIA_DOOR_BLOCK || $block === Block::BIRCH_DOOR_BLOCK || $block === Block::DARK_OAK_DOOR_BLOCK || $block === Block::IRON_DOOR_BLOCK || $block === Block::JUNGLE_DOOR_BLOCK || $block === Block::OAK_DOOR_BLOCK || $block === Block::SPRUCE_DOOR_BLOCK || $block === Block::WOODEN_DOOR_BLOCK))
                         return;
-                    if($player->hasPermission("worldguard.usetrapdoors." . $reg->getName()) && ($block === Block::IRON_TRAPDOOR || $block === Block::TRAPDOOR || $block === Block::WOODEN_TRAPDOOR ))
+                    if($player->hasPermission("customspace.usetrapdoors." . $reg->getName()) && ($block === Block::IRON_TRAPDOOR || $block === Block::TRAPDOOR || $block === Block::WOODEN_TRAPDOOR ))
                         return;
-                    if($player->hasPermission("worldguard.usegates." . $reg->getName()) && ($block === Block::ACACIA_FENCE_GATE  || $block === Block::BIRCH_FENCE_GATE || $block === Block::DARK_OAK_FENCE_GATE || $block === Block::FENCE_GATE || $block === Block::JUNGLE_FENCE_GATE || $block === Block::OAK_FENCE_GATE || $block === Block::SPRUCE_FENCE_GATE ))
+                    if($player->hasPermission("customspace.usegates." . $reg->getName()) && ($block === Block::ACACIA_FENCE_GATE  || $block === Block::BIRCH_FENCE_GATE || $block === Block::DARK_OAK_FENCE_GATE || $block === Block::FENCE_GATE || $block === Block::JUNGLE_FENCE_GATE || $block === Block::OAK_FENCE_GATE || $block === Block::SPRUCE_FENCE_GATE ))
                         return;
-                    if($player->hasPermission("worldguard.useanvil." . $reg->getName()) && ($block === Block::ANVIL))
+                    if($player->hasPermission("customspace.useanvil." . $reg->getName()) && ($block === Block::ANVIL))
                         return;
-                    if($player->hasPermission("worldguard.usecauldron." . $reg->getName()) && ($block === Block::CAULDRON_BLOCK))
+                    if($player->hasPermission("customspace.usecauldron." . $reg->getName()) && ($block === Block::CAULDRON_BLOCK))
                         return;
-                    if($player->hasPermission("worldguard.usebrewingstand." . $reg->getName()) && ($block === Block::BREWING_STAND_BLOCK ))
+                    if($player->hasPermission("customspace.usebrewingstand." . $reg->getName()) && ($block === Block::BREWING_STAND_BLOCK ))
                         return;
-                    if($player->hasPermission("worldguard.usebeacon." . $reg->getName()) && ($block === Block::BEACON ))
+                    if($player->hasPermission("customspace.usebeacon." . $reg->getName()) && ($block === Block::BEACON ))
                         return;
-                    if($player->hasPermission("worldguard.usecraftingtable." . $reg->getName()) && ($block === Block::BEACON ))
+                    if($player->hasPermission("customspace.usecraftingtable." . $reg->getName()) && ($block === Block::BEACON ))
                         return;
-                    if($player->hasPermission("worldguard.usenoteblock." . $reg->getName()) && ($block === Block::NOTE_BLOCK ))
+                    if($player->hasPermission("customspace.usenoteblock." . $reg->getName()) && ($block === Block::NOTE_BLOCK ))
                         return;
-                    if($player->hasPermission("worldguard.usepressureplate." . $reg->getName()) && ($block === Block::WOODEN_PRESSURE_PLATE  || $block === Block::LIGHT_WEIGHTED_PRESSURE_PLATE || $block === Block::HEAVY_WEIGHTED_PRESSURE_PLATE || $block === Block::STONE_PRESSURE_PLATE ))
+                    if($player->hasPermission("customspace.usepressureplate." . $reg->getName()) && ($block === Block::WOODEN_PRESSURE_PLATE  || $block === Block::LIGHT_WEIGHTED_PRESSURE_PLATE || $block === Block::HEAVY_WEIGHTED_PRESSURE_PLATE || $block === Block::STONE_PRESSURE_PLATE ))
                         return;
-                    if($player->hasPermission("worldguard.usebutton." . $reg->getName()) && ($block === Block::STONE_BUTTON || $block === Block::WOODEN_BUTTON ))
+                    if($player->hasPermission("customspace.usebutton." . $reg->getName()) && ($block === Block::STONE_BUTTON || $block === Block::WOODEN_BUTTON ))
                         return;
                     if (in_array($block, self::USABLES)) {
                         if ($reg->getFlag("deny-msg") === "true") {
@@ -176,7 +177,7 @@ class EventListener implements Listener {
                         return;
                     }
                 } else $event->setCancelled(false);
-                if(!$player->hasPermission("worldguard.edit." . $reg->getName())){
+                if(!$player->hasPermission("customspace.edit." . $reg->getName())){
                     if (in_array($event->getItem()->getId(), self::OTHER)) {
                         $player->sendMessage(TF::RED.'You cannot use '.$event->getItem()->getName().'.');
                         $event->setCancelled();
@@ -222,10 +223,10 @@ class EventListener implements Listener {
         if (($region = $this->plugin->getRegionFromPosition($position)) !== ""){
             if ($region->getFlag("pluginbypass") === "false"){
                 if ($region->getFlag("block-place") === "false"){
-                    if($event->getPlayer()->hasPermission("worldguard.place." . $region->getName()) || $event->getPlayer()->hasPermission("worldguard.block-place." . $region->getName())){
+                    if($event->getPlayer()->hasPermission("customspace.place." . $region->getName()) || $event->getPlayer()->hasPermission("customspace.block-place." . $region->getName())){
                         return true;
                     }
-                    else if($event->getPlayer()->hasPermission("worldguard.build-bypass")){
+                    else if($event->getPlayer()->hasPermission("customspace.build-bypass")){
                         return true;
                     }
                     else{
@@ -257,10 +258,10 @@ class EventListener implements Listener {
         if (($region = $this->plugin->getRegionFromPosition($position)) !== ""){
             if ($region->getFlag("pluginbypass") === "false"){
                 if ($region->getFlag("block-break") === "false"){
-                    if($event->getPlayer()->hasPermission("worldguard.break." . $region->getName()) || $event->getPlayer()->hasPermission("worldguard.block-break." . $region->getName())){
+                    if($event->getPlayer()->hasPermission("customspace.break." . $region->getName()) || $event->getPlayer()->hasPermission("customspace.block-break." . $region->getName())){
                         return true;
                     }
-                    else if($event->getPlayer()->hasPermission("worldguard.break-bypass")){
+                    else if($event->getPlayer()->hasPermission("customspace.break-bypass")){
                         return true;
                     }
                     else{
@@ -280,7 +281,7 @@ class EventListener implements Listener {
 
     public function onDeathItemDrop(PlayerDeathEvent $event) {        
         if (($reg = $this->plugin->getRegionByPlayer($player = $event->getPlayer())) !== "") {
-            if ($reg->getFlag("item-by-death") === "false" && !$player->hasPermission("worldguard.deathdrop." . $reg->getName())) {
+            if ($reg->getFlag("item-by-death") === "false" && !$player->hasPermission("customspace.deathdrop." . $reg->getName())) {
                 if ($reg->getFlag("deny-msg") === "true") {
                     $player->sendMessage(TF::RED. $this->plugin->resourceManager->getMessages()["denied-item-death-drop"]);
                 }
@@ -422,7 +423,7 @@ class EventListener implements Listener {
         $cmd = explode(" ", $event->getMessage())[0];
         if (substr($cmd, 0, 1) === '/') {
             if (($region = $this->plugin->getRegionByPlayer($player = $event->getPlayer())) !== "" && !$region->isCommandAllowed($cmd)) {
-                if (!$player->hasPermission("worldguard.bypass-cmd.".$region->getName())){
+                if (!$player->hasPermission("customspace.bypass-cmd.".$region->getName())){
                     $player->sendMessage(TF::RED.'You cannot use '.$cmd.' in this area.');
                     $event->setCancelled();
                 }
@@ -436,7 +437,7 @@ class EventListener implements Listener {
      */
     public function onDrop(PlayerDropItemEvent $event) {
         if (($reg = $this->plugin->getRegionByPlayer($player = $event->getPlayer())) !== "") {
-            if ($reg->getFlag("item-drop") === "false" && !$player->hasPermission("worldguard.drop." . $reg->getName())) {
+            if ($reg->getFlag("item-drop") === "false" && !$player->hasPermission("customspace.drop." . $reg->getName())) {
                 if ($reg->getFlag("deny-msg") === "true") {
                     $player->sendMessage(TF::RED. $this->plugin->resourceManager->getMessages()["denied-item-drop"]);
                 }
@@ -503,7 +504,7 @@ class EventListener implements Listener {
         $player = $event->getPlayer();
         if ($player instanceof Player){
             if(($region = $this->plugin->getRegionByPlayer($event->getPlayer())) !== ""){
-                if($region->getFlag("eat") === "false" && !$player->hasPermission("worldguard.eat." . $region->getName())) {
+                if($region->getFlag("eat") === "false" && !$player->hasPermission("customspace.eat." . $region->getName())) {
                     $event->setCancelled();
                     if ($region->getFlag("deny-msg") === "true") {
                         $player->sendMessage(TF::RED. $this->plugin->resourceManager->getMessages()["denied-eat"]);

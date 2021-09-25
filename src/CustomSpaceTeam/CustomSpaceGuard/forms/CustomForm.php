@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace MihaiChirculete\WorldGuard\forms;
+namespace CustomSpaceTeam\CustomSpaceGuard\forms;
 use Closure;
-use MihaiChirculete\WorldGuard\elements\Element;
+use CustomSpaceTeam\CustomSpaceGuard\elements\Element;
 use pocketmine\{form\FormValidationException, Player, utils\Utils};
 use function array_merge;
 use function gettype;

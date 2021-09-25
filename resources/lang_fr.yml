@@ -1,6 +1,6 @@
 ---
 author_name: Hugo
-gui_wg_menu_title: Menu World Guard
+gui_wg_menu_title: Menu CustomSpace
 gui_label_choose_option: Choisie une option
 gui_btn_rg_management: "Modifiez les r\xE9gions"
 gui_btn_help: Aide
@@ -52,8 +52,8 @@ gui_flag_plant_growth: Autoriser la croissance des plantes
 gui_flag_spread: Autoriser la propagassion
 gui_flag_block_burn: "Autoriser les blocks de br\xFBler"
 gui_flag_priority: "Priorit\xE9 r\xE9gionale"
-gui_help_menu_label1: 'Si vous avez besoin d''aide pour configurer World Guard, consultez
+gui_help_menu_label1: 'Si vous avez besoin d''aide pour configurer Custom Space, consultez
   le tutoriel nous l''avons fait pour vous: '
-gui_help_menu_label2: http://worldguard.ddns.net/tutorial
+gui_help_menu_label2: http://****.ddns.net/tutorial
 gui_btn_advertising: Advertising
 ...

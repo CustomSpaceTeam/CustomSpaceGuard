@@ -20,7 +20,7 @@
 * GitHub: https://github.com/MihaiChirculete
 */
 
-namespace MihaiChirculete\WorldGuard;
+namespace CustomSpaceTeam\CustomSpaceGuard;
 
 use pocketmine\Player;
 use pocketmine\network\mcpe\protocol\SetPlayerGameTypePacket;
@@ -256,6 +256,6 @@ class Utils {
     // useful for static functions when you need the plugin refference
     public static function getPluginFromIssuer(Player $issuer)
     {
-        return $issuer->getServer()->getPluginManager()->getPlugin("WorldGuard");
+        return $issuer->getServer()->getPluginManager()->getPlugin("CustomSpace");
     }
 }

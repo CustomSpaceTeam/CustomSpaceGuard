@@ -20,7 +20,7 @@
 * GitHub: https://github.com/MihaiChirculete
 */
 
-namespace MihaiChirculete\WorldGuard;
+namespace CustomSpaceTeam\CustomSpaceGuard;
 
 use pocketmine\Server;
 use pocketmine\math\Vector3;
@@ -48,7 +48,7 @@ class Region {
         $this->pos2 = $pos2;
         $this->levelname = $level;
 
-        foreach (WorldGuard::FLAGS as $k => $v) {
+        foreach (CustomSpace::FLAGS as $k => $v) {
             if (!isset($flags[$k])) $flags[$k] = $v;
         }
         $this->flags = $flags;
@@ -138,7 +138,7 @@ class Region {
             return;
         }
 
-        switch (WorldGuard::FLAG_TYPE[$flag]) {
+        switch (CustomSpace::FLAG_TYPE[$flag]) {
             case "integer":
                 if ($flag === "fly-mode") {
                     if ($value < 0 || $value > 3) {
@@ -186,7 +186,7 @@ class Region {
 
     public function resetFlag(string $flag)
     {
-        $this->flags[$flag] = WorldGuard::FLAGS[$flag];
+        $this->flags[$flag] = CustomSpace::FLAGS[$flag];
     }
 
     public function getBlockedCmds() : string

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace MihaiChirculete\WorldGuard\ResourceUtils;
+namespace CustomSpaceTeam\CustomSpaceGuard\ResourceUtils;
 
 use pocketmine\Server;
-use MihaiChirculete\WorldGuard\WorldGuard;
+use CustomSpaceTeam\CustomSpaceGuard\CustomSpace;
 
 class ResourceManager
 {
@@ -18,7 +18,7 @@ class ResourceManager
     private $lang = [];
     private $config = [];
     private $regions = [];
-    private function __construct(WorldGuard $plugin, Server $sv)
+    private function __construct(CustomSpace $plugin, Server $sv)
     {
         $this->pluginInstance = $plugin;
         $this->serverInstance = $sv;
@@ -26,7 +26,7 @@ class ResourceManager
 
         $this->pluginVersion = $this->pluginInstance->getDescription()->getVersion();
     }
-    public static function getInstance(WorldGuard $plugin, Server $sv)
+    public static function getInstance(CustomSpace $plugin, Server $sv)
     {
         if(ResourceManager::$instance === null)
             ResourceManager::$instance = new ResourceManager($plugin, $sv);

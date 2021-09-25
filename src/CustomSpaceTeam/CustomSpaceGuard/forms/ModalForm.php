@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace MihaiChirculete\WorldGuard\forms;
+namespace CustomSpaceTeam\CustomSpaceGuard\forms;
 use Closure;
 use pocketmine\{form\FormValidationException, Player, utils\Utils};
 use function gettype;

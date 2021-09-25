@@ -1,13 +1,14 @@
 <?php
 
 
-namespace MihaiChirculete\WorldGuard;
+namespace CustomSpaceTeam\CustomSpaceGuard;
+
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\Player;
 use pocketmine\command\CommandSender;
 use pocketmine\command\ConsoleCommandSender;
-use MihaiChirculete\WorldGuard\forms\{CustomForm, CustomFormResponse, MenuForm};
-use MihaiChirculete\WorldGuard\elements\{Button, Dropdown, Image, Input, Label, Toggle};
+use CustomSpaceTeam\CustomSpaceGuard\forms\{CustomForm, CustomFormResponse, MenuForm};
+use CustomSpaceTeam\CustomSpaceGuard\elements\{Button, Dropdown, Image, Input, Label, Toggle};
 
 class GUI
 {
@@ -114,7 +115,7 @@ class GUI
     {
         $lang = Utils::getPluginFromIssuer($issuer)->resourceManager->getLanguagePack();
 
-        $regions = array_keys($issuer->getServer()->getPluginManager()->getPlugin("WorldGuard")->getRegions());
+        $regions = array_keys($issuer->getServer()->getPluginManager()->getPlugin("CustomSpace")->getRegions());
         foreach ($regions as $key => $value) {
             $regions[$key] = strval($value);
         }
@@ -133,7 +134,7 @@ class GUI
     public static function displayExistingRegions(Player $issuer)
     {
         $lang = Utils::getPluginFromIssuer($issuer)->resourceManager->getLanguagePack();
-        $regions = array_keys($issuer->getServer()->getPluginManager()->getPlugin("WorldGuard")->getRegions());
+        $regions = array_keys($issuer->getServer()->getPluginManager()->getPlugin("CustomSpace")->getRegions());
         foreach ($regions as $key => $value) {
             $regions[$key] = strval($value);
         }
@@ -151,7 +152,7 @@ class GUI
 
     public static function displayRgEditing(Player $issuer, $rgName)
     {
-        $rg = $issuer->getServer()->getPluginManager()->getPlugin("WorldGuard")->getRegion($rgName);
+        $rg = $issuer->getServer()->getPluginManager()->getPlugin("CustomSpace")->getRegion($rgName);
         self::$currentlyEditedRg = $rgName;
 
         $lang = Utils::getPluginFromIssuer($issuer)->resourceManager->getLanguagePack();

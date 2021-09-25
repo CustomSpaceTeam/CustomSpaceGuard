@@ -1,6 +1,6 @@
 ---
 author_name: Suerion und Macon21
-gui_wg_menu_title: 'World Guard Menü'
+gui_wg_menu_title: 'Custom Space Guard Menü'
 gui_label_choose_option: 'Wähle eine Option.'
 gui_btn_rg_management: Region Optionen
 gui_btn_help: Hilfe
@@ -55,7 +55,7 @@ gui_flag_plant_growth: Erlaube das Pflanzenwachstum
 gui_flag_spread: 'Erlaube das Ausbreiten von Blöcken (Grasblöcke, Myzel, o.Ä.)' 
 gui_flag_block_burn: Erlaubt das Ausbreiten von Feuer
 gui_flag_priority: 'Priorität von einer Region:'
-gui_help_menu_label1: "Wenn du Hilfe bei den Einstellungen von World Guard brauchst, schau dir das Tutorial an,
+gui_help_menu_label1: "Wenn du Hilfe bei den Einstellungen von CustomSpace brauchst, schau dir das Tutorial an,
   welches wir für dich gemacht haben:"
-gui_help_menu_label2: https://github.com/Chalapa13/WorldGuard/wiki/Tutorial
+gui_help_menu_label2: https://github.com/CustomSpaceTeam/CustomSpaceGuard/wiki
 ...

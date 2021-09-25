@@ -10,17 +10,18 @@
 * |   _   ||       ||   |  | ||       ||       ||   |_| ||       ||   _   ||   |  | ||       |
 * |__| |__||_______||___|  |_||_______||______| |_______||_______||__| |__||___|  |_||______|
 *
-* By MihaiChirculete.
+* By CustomSpaceTeam -> MihaiChirculete, Suerion, Austin
+ * Helpers ->
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* GitHub: https://github.com/MihaiChirculete
+* GitHub: https://github.com/CustomSpaceTeam
 */
 
-namespace MihaiChirculete\WorldGuard;
+namespace CustomSpaceTeam\CustomSpaceGuard;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\{Command, CommandSender, ConsoleCommandSender};
@@ -28,10 +29,10 @@ use pocketmine\utils\TextFormat as TF;
 use pocketmine\Player;
 use pocketmine\level\Position;
 use pocketmine\permission\{Permission, PermissionManager};
-use MihaiChirculete\WorldGuard\ResourceUtils\ResourceManager;
-use MihaiChirculete\WorldGuard\ResourceUtils\ResourceUpdater;
+use CustomSpaceTeam\CustomSpaceGuard\ResourceUtils\ResourceManager;
+use CustomSpaceTeam\CustomSpaceGuard\ResourceUtils\ResourceUpdater;
 
-class WorldGuard extends PluginBase {
+class CustomSpace extends PluginBase {
 
     const FLAGS = [
         "pluginbypass" => "false",
@@ -242,12 +243,12 @@ class WorldGuard extends PluginBase {
     }
 
     public function onPlayerLogoutRegion(Player $player) {
-        //if player is loggedIn in WG Region and Logout
+        //if player is loggedIn in CS Region and Logout
         $wgReg = $this->getRegion($player);
         if($player instanceof Player && $wgReg !== ""){
             $player->removeAllEffects();
             if($this->resourceManager->getConfig()["debugging"] === true){
-                $this->getLogger()->info("Instance of player is in WorldGuard Region! Effects from Region should be deleted"); 
+                $this->getLogger()->info("Instance of player is in Custom Space! Effects from Region should be deleted");
             }
         }
     }
@@ -281,7 +282,7 @@ class WorldGuard extends PluginBase {
                 }
                 if ($old->getFlag("allowed-leave") === "false")
                 {
-                    if(!$player->hasPermission("worldguard.leave." . $oldregion))
+                    if(!$player->hasPermission("customspace.leave." . $oldregion))
                     {
                         $player->sendMessage(TF::RED. $this->resourceManager->getMessages()["denied-leave"]);
                         return false;
@@ -319,14 +320,14 @@ class WorldGuard extends PluginBase {
                 }
 
                 if ($new->getFlag("allowed-enter") === "false"){
-                    if(!$player->hasPermission("worldguard.enter." . $newregion))
+                    if(!$player->hasPermission("customspace.enter." . $newregion))
                     {
                         $player->sendMessage(TF::RED. $this->resourceManager->getMessages()["denied-enter"]);
                         return false;
                     }
                 }
                 if (($gm = $new->getGamemode()) !== $player->getGamemode()) {
-                    if(!$player->hasPermission("worldguard.bypass.gamemode." . $newregion)){
+                    if(!$player->hasPermission("customspace.bypass.gamemode." . $newregion)){
                         if ($gm !== "false"){
                             if ($gm == "0" || $gm == "1" || $gm == "2" || $gm == "3"){
                                 $player->setGamemode($gm);
@@ -355,7 +356,7 @@ class WorldGuard extends PluginBase {
                 if ($new->getFlag("receive-chat") === "false") {
                     $this->muted[$player->getRawUniqueId()] = $player;
                 }
-                if(!$player->hasPermission("worldguard.bypass.fly." . $newregion)){
+                if(!$player->hasPermission("customspace.bypass.fly." . $newregion)){
                     if (($flight = $new->getFlight()) !== self::FLY_VANILLA) {
                         if ($player->getGamemode() != 1){
                             switch ($flight) {
@@ -455,96 +456,96 @@ class WorldGuard extends PluginBase {
             $this->regions[$name] = new Region($name, $map[0], $map[1], $level, self::FLAGS);
             unset($this->process[$id], $this->creating[$id]);
 
-            $permission = new Permission("worldguard.enter." . $name, "Allows player to enter the " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.enter", true);
+            $permission = new Permission("customspace.enter." . $name, "Allows player to enter the " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.enter", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.leave." . $name, "Allows player to leave the " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.leave", true);
+            $permission = new Permission("customspace.leave." . $name, "Allows player to leave the " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.leave", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.place." . $name, "Allows player to build blocks in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.place", true);
+            $permission = new Permission("customspace.place." . $name, "Allows player to build blocks in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.place", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.block-place." . $name, "Allows player to build blocks in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.block-place", true);
+            $permission = new Permission("customspace.block-place." . $name, "Allows player to build blocks in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.block-place", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.break." . $name, "Allows player to break blocks in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.break", true);
+            $permission = new Permission("customspace.break." . $name, "Allows player to break blocks in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.break", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.block-break." . $name, "Allows player to build blocks in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.block-break", true);
+            $permission = new Permission("customspace.block-break." . $name, "Allows player to build blocks in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.block-break", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.edit." . $name, "Allows player to edit blocks in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.edit", true);
+            $permission = new Permission("customspace.edit." . $name, "Allows player to edit blocks in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.edit", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.eat." . $name, "Allows player to eat in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.eat", true);
+            $permission = new Permission("customspace.eat." . $name, "Allows player to eat in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.eat", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.drop." . $name, "Allows player to drop items in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.drop", true);
+            $permission = new Permission("customspace.drop." . $name, "Allows player to drop items in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.drop", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usechest." . $name, "Allows player to use chests in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usechest", true);
+            $permission = new Permission("customspace.usechest." . $name, "Allows player to use chests in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usechest", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usechestender." . $name, "Allows player to use ender chests in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usechestender", true);
+            $permission = new Permission("customspace.usechestender." . $name, "Allows player to use ender chests in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usechestender", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usetrappedchest." . $name, "Allows player to use trapped chests in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usetrappedchest", true);
+            $permission = new Permission("customspace.usetrappedchest." . $name, "Allows player to use trapped chests in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usetrappedchest", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.enchantingtable." . $name, "Allows player to use enchanting table in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.enchantingtable", true);
+            $permission = new Permission("customspace.enchantingtable." . $name, "Allows player to use enchanting table in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.enchantingtable", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usedoors." . $name, "Allows player to use doors in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usedoors", true);
+            $permission = new Permission("customspace.usedoors." . $name, "Allows player to use doors in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usedoors", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usetrapdoors." . $name, "Allows player to use trapdoors in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usetrapdoors", true);
+            $permission = new Permission("customspace.usetrapdoors." . $name, "Allows player to use trapdoors in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usetrapdoors", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usegates." . $name, "Allows player to use gates in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usegates", true);
+            $permission = new Permission("customspace.usegates." . $name, "Allows player to use gates in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usegates", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usefurnaces." . $name, "Allows player to use furnaces in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usefurnaces", true);
+            $permission = new Permission("customspace.usefurnaces." . $name, "Allows player to use furnaces in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usefurnaces", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.useanvil." . $name, "Allows player to use anvils in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.useanvil", true);
+            $permission = new Permission("customspace.useanvil." . $name, "Allows player to use anvils in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.useanvil", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usecauldron." . $name, "Allows player to use cauldron in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usecauldron", true);
+            $permission = new Permission("customspace.usecauldron." . $name, "Allows player to use cauldron in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usecauldron", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usebrewingstand." . $name, "Allows player to use brewing stands in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usebrewingstand", true);
+            $permission = new Permission("customspace.usebrewingstand." . $name, "Allows player to use brewing stands in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usebrewingstand", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usebeacon." . $name, "Allows player to use beacons in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usebeacon", true);
+            $permission = new Permission("customspace.usebeacon." . $name, "Allows player to use beacons in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usebeacon", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usepressureplate." . $name, "Allows player to use pressureplates in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usepressureplate", true);
+            $permission = new Permission("customspace.usepressureplate." . $name, "Allows player to use pressureplates in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usepressureplate", true);
             PermissionManager::getInstance()->addPermission($permission);
 
-            $permission = new Permission("worldguard.usebutton." . $name, "Allows player to use buttons in " . $name . " region.", Permission::DEFAULT_OP);
-            $permission->addParent("worldguard.usebutton", true);
+            $permission = new Permission("customspace.usebutton." . $name, "Allows player to use buttons in " . $name . " region.", Permission::DEFAULT_OP);
+            $permission->addParent("customspace.usebutton", true);
             PermissionManager::getInstance()->addPermission($permission);
             $this->resourceManager->saveRegions($this->regions);
             return $name;
@@ -555,8 +556,8 @@ class WorldGuard extends PluginBase {
     public function onCommand(CommandSender $issuer, Command $cmd, string $label, array $args): bool
     {
         switch (strtolower($cmd->getName())) {
-            case "worldguard":
-                if(!$issuer->hasPermission("worldguard.ui"))
+            case "customspace":
+                if(!$issuer->hasPermission("customspace.ui"))
                 {
                     $issuer->sendMessage($this->resourceManager->getMessages()["no-permission-for-command"]);
                     return false;
@@ -564,14 +565,14 @@ class WorldGuard extends PluginBase {
                 GUI::displayMenu($issuer);
                 break;
             case "region":
-                if (!$issuer->hasPermission("worldguard.create") || !$issuer->hasPermission("worldguard.modify") || !$issuer->hasPermission("worldguard.delete")) {
+                if (!$issuer->hasPermission("customspace.create") || !$issuer->hasPermission("customspace.modify") || !$issuer->hasPermission("customspace.delete")) {
                     $issuer->sendMessage($this->resourceManager->getMessages()["no-permission-for-command"]);
                     return false;
                 }
                 if (isset($args[0])) {
                     switch ($args[0]) {
                         case "setbiome":
-                            if (!$issuer->hasPermission("worldguard.modify")) {
+                            if (!$issuer->hasPermission("customspace.modify")) {
                                 $issuer->sendMessage($this->resourceManager->getMessages()["no-permission-for-command"]);
                                 return false;
                             }
@@ -592,7 +593,7 @@ class WorldGuard extends PluginBase {
                             }
                             break;
                         case "create":
-                            if (!$issuer->hasPermission("worldguard.create")) {
+                            if (!$issuer->hasPermission("customspace.create")) {
                                 $issuer->sendMessage($this->resourceManager->getMessages()["no-permission-for-command"]);
                                 return false;
                             }
@@ -646,7 +647,7 @@ class WorldGuard extends PluginBase {
                             }
                             break;
                         case "delete":
-                            if (!$issuer->hasPermission("worldguard.delete")) {
+                            if (!$issuer->hasPermission("customspace.delete")) {
                                 $issuer->sendMessage($this->resourceManager->getMessages()["no-permission-for-command"]);
                                 return false;
                             }
@@ -721,7 +722,7 @@ class WorldGuard extends PluginBase {
                             break;
                         case "flag":
                         case "flags":
-                            if (!$issuer->hasPermission("worldguard.modify")) {
+                            if (!$issuer->hasPermission("customspace.modify")) {
                                 $issuer->sendMessage($this->resourceManager->getMessages()["no-permission-for-command"]);
                                 return false;
                             }
@@ -774,17 +775,17 @@ class WorldGuard extends PluginBase {
                     }
                 } else {
                     $issuer->sendMessage(implode("\n".TF::LIGHT_PURPLE, [
-                        "§9§lWorldGuard ("]).$this->getServer()->getVersion().implode("\n".TF::LIGHT_PURPLE, [") §r§9Help Page §7(by Chalapa)",
+                        "§9§lcustomspace ("]).$this->getServer()->getVersion().implode("\n".TF::LIGHT_PURPLE, [") §r§9Help Page §7(by Chalapa)",
                         " ",
-                        "§e/worldguard §7- §eOpen up the User Interface",
+                        "§e/customspace §7- §eOpen up the User Interface",
                         "§a/region create <region name> §7- §aCreate a new region.",
                         "§3/region list §7- §3List all regions.",
                         "§6/region info <region name> §7- §6Get information about your current region.",
                         "§c/region delete <region name> §7- §cPermanently delete a region.",
                         "§d/region flags <set/get/reset> <region name> §7- §dSet, Get, or Reset <region name>'s flags.",
                         " ",
-                        "§9For additional help and documentation, visit WorldGuard's GitHub page:",
-                        "§9https://github.com/MihaiChirculete/WorldGuard/",
+                        "§9For additional help and documentation, visit CustomSpaceGuard's GitHub page:",
+                        "§9https://github.com/CustomSpaceTeam/CustomSpaceGuard/",
                     ]));
                 }
                 break;

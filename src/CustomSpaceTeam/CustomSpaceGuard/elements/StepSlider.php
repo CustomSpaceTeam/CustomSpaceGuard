@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace MihaiChirculete\WorldGuard\elements;
+namespace CustomSpaceTeam\CustomSpaceGuard\elements;
 class StepSlider extends Dropdown{
 	/**
 	 * @return string
