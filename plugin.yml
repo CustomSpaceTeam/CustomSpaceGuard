@@ -1,76 +1,75 @@
-name: ProtectMyWorld
-main: MihaiChirculete\WorldGuard\WorldGuard
+name: CustomSpace
+main: CustomSpaceTeam\CustomSpaceGuard\CustomSpace
 api: [3.0.0]
-mcpe-protocol: 448
-version: 1.1.95
-author: MihaiChirculete
-website: https://github.com/MihaiChirculete/WorldGuard
+version: 1.0
+author: CustomSpaceTeam
+website: https://github.com/CustomSpaceTeam/CustomSpaceGuard
 commands:
-  worldguard:
-    description: Opens up the User Interface of WorldGuard.
-    aliases: ["wg"]
+  customspace:
+    description: Opens up the User Interface of CustomSpace.
+    aliases: ["csg"]
     default: op
   region:
     description: Create/Manage/Delete regions.
-    aliases: ["rg"]
+    aliases: ["crg"]
     default: op
 softdepend: ["RedstoneCircuit"]
 permissions:
-  worldguard.ui:
+  customspace.ui:
     default: op
-  worldguard.create:
+  customspace.create:
     default: op
-  worldguard.modify:
+  customspace.modify:
     default: op
-  worldguard.delete:
+  customspace.delete:
     default: op
-  worldguard.enter:
+  customspace.enter:
     default: op
-  worldguard.leave:
+  customspace.leave:
     default: op
-  worldguard.place:
+  customspace.place:
     default: op
-  worldguard.block-place:
+  customspace.block-place:
     default: op
-  worldguard.break:
+  customspace.break:
     default: op
-  worldguard.block-break:
+  customspace.block-break:
     default: op
-  worldguard.edit:
+  customspace.edit:
     default: op
-  worldguard.eat:
+  customspace.eat:
     default: op
-  worldguard.drop:
+  customspace.drop:
     default: op
-  worldguard.deathdrop:
+  customspace.deathdrop:
     default: op
-  worldguard.usechest:
+  customspace.usechest:
     default: op
-  worldguard.usechestender:
+  customspace.usechestender:
     default: op
-  worldguard.usetrappedchest:
+  customspace.usetrappedchest:
     default: op
-  worldguard.enchantingtable:
+  customspace.enchantingtable:
     default: op
-  worldguard.usedoors:
+  customspace.usedoors:
     default: op
-  worldguard.usegates:
+  customspace.usegates:
     default: op
-  worldguard.usetrapdoors:
+  customspace.usetrapdoors:
     default: op
-  worldguard.usefurnaces:
+  customspace.usefurnaces:
     default: op
-  worldguard.useanvil:
+  customspace.useanvil:
     default: op
-  worldguard.usecauldron:
+  customspace.usecauldron:
     default: op
-  worldguard.usebrewingstand:
+  customspace.usebrewingstand:
     default: op
-  worldguard.usebeacons:
+  customspace.usebeacons:
     default: op
-  worldguard.usepressureplate:
+  customspace.usepressureplate:
     default: op
-  worldguard.useusebutton:
+  customspace.useusebutton:
     default: op
-  worldguard.bypass.gamemode:
+  customspace.bypass.gamemode:
     default: op

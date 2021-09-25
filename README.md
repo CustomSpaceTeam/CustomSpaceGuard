@@ -1,12 +1,12 @@
-# WorldGuard [![Poggit-CI](https://poggit.pmmp.io/ci.badge/Chalapa13/WorldGuard/WorldGuard)](https://poggit.pmmp.io/ci/Chalapa13/WorldGuard/WorldGuard)
+# Custom Space Guard [![Poggit-CI](https://poggit.pmmp.io/ci.badge/CustomSpaceTeam/CustomSpaceGuard)](https://poggit.pmmp.io/ci/CustomSpaceTeam/CustomSpaceGuard)
 
-[![](https://poggit.pmmp.io/shield.state/WorldGuard)](https://poggit.pmmp.io/p/WorldGuard)
-[![](https://poggit.pmmp.io/shield.api/WorldGuard)](https://poggit.pmmp.io/p/WorldGuard)
-[![](https://poggit.pmmp.io/shield.dl.total/WorldGuard)](https://poggit.pmmp.io/p/WorldGuard)
-[![](https://poggit.pmmp.io/shield.dl/WorldGuard)](https://poggit.pmmp.io/p/WorldGuard)
+[![](https://poggit.pmmp.io/shield.state/CustomSpaceGuard)](https://poggit.pmmp.io/p/CustomSpaceGuard)
+[![](https://poggit.pmmp.io/shield.api/CustomSpaceGuard)](https://poggit.pmmp.io/p/CustomSpaceGuard)
+[![](https://poggit.pmmp.io/shield.dl.total/CustomSpaceGuard)](https://poggit.pmmp.io/p/CustomSpaceGuard)
+[![](https://poggit.pmmp.io/shield.dl/CustomSpaceGuard)](https://poggit.pmmp.io/p/CustomSpaceGuard)
 
 
-This plugin is a port of the popular bukkit plugin called ["WorldGuard"](https://dev.bukkit.org/projects/worldguard). It was originally developed by [Muqsit](https://github.com/Muqsit), but more flags and extended capabilities were added by me.
+This plugin is a port of the popular bukkit plugin called ["WorldGuard"](https://dev.bukkit.org/projects/worldguard). It was originally developed by [Muqsit](https://github.com/Muqsit), but more flags and extended capabilities were added by us.
 
 # Features
 - User friendly interface for users that prefer a menu rather than typing lenghty commands.   
@@ -20,14 +20,14 @@ This plugin is a port of the popular bukkit plugin called ["WorldGuard"](https:/
 For the full list of flags check the tutorial.
 
 # Tutorial
-Read the [tutorial](http://worldguard.zapto.org/tutorial).     
+Read the [tutorial](https://github.com/CustomSpaceTeam/CustomSpaceGuard/wiki).     
 Video tutorial available [here](https://www.youtube.com/watch?v=80s21rwU7K8).
 
 Be sure to check the above link when updating the plugin to see changes and view available flags. (can also be found in-game by doing /rg flags get region_name)
 
 # Download
-You can download the latest stable compiled plugin from [here](https://poggit.pmmp.io/p/WorldGuard).
-If you want more frequent updates you can get the compiled plugin from [here](https://poggit.pmmp.io/ci/Chalapa13/WorldGuard/WorldGuard), however keep in mind that these versions have a higher risk of bugs.
+You can download the latest stable compiled plugin from [here](https://poggit.pmmp.io/p/CustomSpaceGuard).
+If you want more frequent updates you can get the compiled plugin from [here](https://poggit.pmmp.io/ci/CustomSpaceTeam/CustomSpaceGuard), however keep in mind that these versions have a higher risk of bugs.
 
 # Customizable Permissions
 Some flags come with their own permission in order to customize regions even more and only allow certain groups of players do certain actions in a region.
