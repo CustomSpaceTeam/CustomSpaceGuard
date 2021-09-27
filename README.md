@@ -20,9 +20,10 @@ This plugin will do the same as the populare bukkit plugin called ["WorldGuard"]
 For the full list of flags check the tutorial.
 
 # Tutorial
-Read the [tutorial](https://github.com/CustomSpaceTeam/CustomSpaceGuard/wiki).     
+- Read the [tutorial](https://github.com/CustomSpaceTeam/CustomSpaceGuard/wiki).
 !!We would Port the tutorials from the old WorldGuard Wiki soon.
-Video tutorial available [here](https://www.youtube.com/watch?v=80s21rwU7K8).
+
+- Video tutorial available [here](https://www.youtube.com/watch?v=80s21rwU7K8).
 !!Attention, we had renamed the Plugin, but the video tutorial works as it should. You need to use /csg instead of /wg and /crg instead of /rg
 
 Be sure to check the above link when updating the plugin to see changes and view available flags. (can also be found in-game by doing /crg flags get region_name)
